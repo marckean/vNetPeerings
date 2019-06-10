@@ -7,42 +7,42 @@
         "defaultValue": [
             {
               "peer": {
-                "fromvNet": "T1vNet", "remoteVirtualNetwork": "T2vNet01", "useRemoteGateways": false, "allowGatewayTransit": false
+                "existingLocalVirtualNetworkName": "T1vNet", "existingRemoteVirtualNetworkName": "T2vNet01", "existingRemoteVirtualNetworkResourceGroupName": "T2-01", "useRemoteGateways": false, "allowGatewayTransit": false
               }
             },
             {
               "peer": {
-                "fromvNet": "T1vNet", "remoteVirtualNetwork": "T2vNet02", "useRemoteGateways": false, "allowGatewayTransit": false
+                "existingLocalVirtualNetworkName": "T1vNet", "existingRemoteVirtualNetworkName": "T2vNet02", "existingRemoteVirtualNetworkResourceGroupName": "T2-01", "useRemoteGateways": false, "allowGatewayTransit": false
               }
             },
             {
               "peer": {
-                "fromvNet": "T2vNet01", "remoteVirtualNetwork": "T1vNet", "useRemoteGateways": false, "allowGatewayTransit": false
+                "existingLocalVirtualNetworkName": "T2vNet01", "existingRemoteVirtualNetworkName": "T1vNet", "existingRemoteVirtualNetworkResourceGroupName": "T1-01", "useRemoteGateways": false, "allowGatewayTransit": false
               }
             },
             {
               "peer": {
-                "fromvNet": "T2vNet02", "remoteVirtualNetwork": "T1vNet", "useRemoteGateways": false, "allowGatewayTransit": false
+                "existingLocalVirtualNetworkName": "T2vNet02", "existingRemoteVirtualNetworkName": "T1vNet", "existingRemoteVirtualNetworkResourceGroupName": "T1-01", "useRemoteGateways": false, "allowGatewayTransit": false
               }
             },
             {
               "peer": {
-                "fromvNet": "T2vNet01", "remoteVirtualNetwork": "T3-TransitHubvNet", "useRemoteGateways": true, "allowGatewayTransit": false
+                "existingLocalVirtualNetworkName": "T2vNet01", "existingRemoteVirtualNetworkName": "T3-TransitHubvNet", "existingRemoteVirtualNetworkResourceGroupName": "T3-01", "useRemoteGateways": true, "allowGatewayTransit": false
               }
             },
             {
               "peer": {
-                "fromvNet": "T2vNet02", "remoteVirtualNetwork": "T3-TransitHubvNet", "useRemoteGateways": true, "allowGatewayTransit": false
+                "existingLocalVirtualNetworkName": "T2vNet02", "existingRemoteVirtualNetworkName": "T3-TransitHubvNet", "existingRemoteVirtualNetworkResourceGroupName": "T3-01", "useRemoteGateways": true, "allowGatewayTransit": false
               }
             },
             {
               "peer": {
-                "fromvNet": "T3-TransitHubvNet", "remoteVirtualNetwork": "T3-TransitHubvNet", "useRemoteGateways": false, "allowGatewayTransit": true
+                "existingLocalVirtualNetworkName": "T3-TransitHubvNet", "existingRemoteVirtualNetworkName": "T2vNet01", "existingRemoteVirtualNetworkResourceGroupName": "T2-01", "useRemoteGateways": false, "allowGatewayTransit": true
               }
             },
             {
               "peer": {
-                "fromvNet": "T3-TransitHubvNet", "remoteVirtualNetwork": "T3-TransitHubvNet", "useRemoteGateways": false, "allowGatewayTransit": true
+                "existingLocalVirtualNetworkName": "T3-TransitHubvNet", "existingRemoteVirtualNetworkName": "T2vNet02", "existingRemoteVirtualNetworkResourceGroupName": "T2-01", "useRemoteGateways": false, "allowGatewayTransit": true
               }
             }
         ],
@@ -57,7 +57,7 @@
       {
         "apiVersion": "2017-10-01",
         "type": "Microsoft.Network/virtualNetworks/virtualNetworkPeerings",
-        "name": "[concat(parameters('peerArray')[copyIndex()].peer.fromvNet, '/peering-to-', parameters('peerArray')[copyIndex()].peer.remoteVirtualNetwork)]",
+        "name": "[concat(parameters('peerArray')[copyIndex()].peer.existingLocalVirtualNetworkName, '/peering-to-', parameters('peerArray')[copyIndex()].peer.existingRemoteVirtualNetworkName)]",
         "location": "[resourceGroup().location]",
         "copy": {
           "name": "peercopy",
@@ -70,8 +70,8 @@
           "allowForwardedTraffic": false,
           "allowGatewayTransit": "[parameters('peerArray')[copyIndex()].peer.allowGatewayTransit]",
           "useRemoteGateways": "[parameters('peerArray')[copyIndex()].peer.useRemoteGateways]",
-          "remoteVirtualNetwork": {
-            "id": "[resourceId('Microsoft.Network/virtualNetworks/', parameters('peerArray')[copyIndex()].peer.remoteVirtualNetwork)]"
+          "existingRemoteVirtualNetworkName": {
+            "id": "[resourceId(parameters('peerArray')[copyIndex()].peer.existingRemoteVirtualNetworkResourceGroupName, 'Microsoft.Network/virtualNetworks', parameters('peerArray')[copyIndex()].peer.existingRemoteVirtualNetworkName)]"
           }
         }
       }
