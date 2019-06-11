@@ -1,81 +1,70 @@
 {
-    "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
-    "contentVersion": "1.0.0.0",
-    "parameters": {
+  "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
       "peerArray": {
-        "type": "array",
-        "defaultValue": [
-            {
-              "peer": {
-                "existingLocalVirtualNetworkName": "T1vNet", "existingRemoteVirtualNetworkName": "T2vNet01", "existingRemoteVirtualNetworkResourceGroupName": "T2_01", "useRemoteGateways": false, "allowGatewayTransit": false
+          "type": "array",
+          "defaultValue": [
+              {
+                "peer": {
+                  "existingLocalVirtualNetworkName": "T1vNet", "existingLocalVirtualNetworkResourceGroupName": "T1_01",
+                  "existingRemoteVirtualNetworkName": "T2vNet01", "existingRemoteVirtualNetworkResourceGroupName": "T2_01",
+                  "useRemoteGateways": false, "allowGatewayTransit": false
+                }
+              },
+              {
+                "peer": {
+                  "existingLocalVirtualNetworkName": "T1vNet", "existingLocalVirtualNetworkResourceGroupName": "T1_01",
+                  "existingRemoteVirtualNetworkName": "T2vNet02", "existingRemoteVirtualNetworkResourceGroupName": "T2_01",
+                  "useRemoteGateways": false, "allowGatewayTransit": false
+                }
               }
-            },
-            {
-              "peer": {
-                "existingLocalVirtualNetworkName": "T1vNet", "existingRemoteVirtualNetworkName": "T2vNet02", "existingRemoteVirtualNetworkResourceGroupName": "T2_01", "useRemoteGateways": false, "allowGatewayTransit": false
-              }
-            },
-            {
-              "peer": {
-                "existingLocalVirtualNetworkName": "T2vNet01", "existingRemoteVirtualNetworkName": "T1vNet", "existingRemoteVirtualNetworkResourceGroupName": "T1_01", "useRemoteGateways": false, "allowGatewayTransit": false
-              }
-            },
-            {
-              "peer": {
-                "existingLocalVirtualNetworkName": "T2vNet02", "existingRemoteVirtualNetworkName": "T1vNet", "existingRemoteVirtualNetworkResourceGroupName": "T1_01", "useRemoteGateways": false, "allowGatewayTransit": false
-              }
-            },
-            {
-              "peer": {
-                "existingLocalVirtualNetworkName": "T2vNet01", "existingRemoteVirtualNetworkName": "T3-TransitHubvNet", "existingRemoteVirtualNetworkResourceGroupName": "T3_01", "useRemoteGateways": true, "allowGatewayTransit": false
-              }
-            },
-            {
-              "peer": {
-                "existingLocalVirtualNetworkName": "T2vNet02", "existingRemoteVirtualNetworkName": "T3-TransitHubvNet", "existingRemoteVirtualNetworkResourceGroupName": "T3_01", "useRemoteGateways": true, "allowGatewayTransit": false
-              }
-            },
-            {
-              "peer": {
-                "existingLocalVirtualNetworkName": "T3-TransitHubvNet", "existingRemoteVirtualNetworkName": "T2vNet01", "existingRemoteVirtualNetworkResourceGroupName": "T2_01", "useRemoteGateways": false, "allowGatewayTransit": true
-              }
-            },
-            {
-              "peer": {
-                "existingLocalVirtualNetworkName": "T3-TransitHubvNet", "existingRemoteVirtualNetworkName": "T2vNet02", "existingRemoteVirtualNetworkResourceGroupName": "T2_01", "useRemoteGateways": false, "allowGatewayTransit": true
-              }
-            }
-        ],
-        "metadata": {
-            "description": "Array of vNet peers. See defaultValue for example."
-        }
-      }
-    },
-    "variables": {
-    },
-    "resources": [
-      {
-        "apiVersion": "2018-11-01",
-        "type": "Microsoft.Network/virtualNetworks/virtualNetworkPeerings",
-        "name": "[concat(parameters('peerArray')[copyIndex()].peer.existingLocalVirtualNetworkName, '/peering-to-', parameters('peerArray')[copyIndex()].peer.existingRemoteVirtualNetworkName)]",
-        "location": "[resourceGroup().location]",
-        "copy": {
-          "name": "peercopy",
-          "count": "[length(parameters('peerArray'))]",
-          "mode": "Serial",
-          "batchSize": 1
-        },
-        "properties": {
-          "allowVirtualNetworkAccess": true,
-          "allowForwardedTraffic": false,
-          "allowGatewayTransit": "[parameters('peerArray')[copyIndex()].peer.allowGatewayTransit]",
-          "useRemoteGateways": "[parameters('peerArray')[copyIndex()].peer.useRemoteGateways]",
-          "existingRemoteVirtualNetworkName": {
-            "id": "[resourceId(parameters('peerArray')[copyIndex()].peer.existingRemoteVirtualNetworkResourceGroupName, 'Microsoft.Network/virtualNetworks', parameters('peerArray')[copyIndex()].peer.existingRemoteVirtualNetworkName)]"
+          ],
+          "metadata": {
+              "description": "Array of vNet peers. See defaultValue for example."
           }
         }
+  },
+  "variables": {},
+  "resources": [
+      {
+          "apiVersion": "2018-05-01",
+          "name": "[concat('peer', copyIndex(1), '_', parameters('peerArray')[copyIndex()].peer.existingRemoteVirtualNetworkName)]",
+          "type": "Microsoft.Resources/deployments",
+          "resourceGroup": "[parameters('peerArray')[copyIndex()].peer.existingLocalVirtualNetworkResourceGroupName]",
+          "copy": {
+              "name": "peercopy",
+              "count": "[length(parameters('peerArray'))]",
+              "mode": "Serial",
+              "batchSize": 1
+          },
+          "properties": {
+              "mode": "Incremental",
+              "template": {
+                  "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+                  "contentVersion": "1.0.0.0",
+                  "parameters": {},
+                  "variables": {},
+                  "resources": [
+                      {
+                          "apiVersion": "2018-11-01",
+                          "type": "Microsoft.Network/virtualNetworks/virtualNetworkPeerings",
+                          "name": "[concat(parameters('peerArray')[copyIndex()].peer.existingLocalVirtualNetworkName, '/peering-to-', parameters('peerArray')[copyIndex()].peer.existingRemoteVirtualNetworkName)]",
+                          "location": "[resourceGroup().location]",
+                          "properties": {
+                              "allowVirtualNetworkAccess": true,
+                              "allowForwardedTraffic": false,
+                              "allowGatewayTransit": "[parameters('peerArray')[copyIndex()].peer.allowGatewayTransit]",
+                              "useRemoteGateways": "[parameters('peerArray')[copyIndex()].peer.useRemoteGateways]",
+                              "remoteVirtualNetwork": {
+                                  "id": "[resourceId(parameters('peerArray')[copyIndex()].peer.existingRemoteVirtualNetworkResourceGroupName, 'Microsoft.Network/virtualNetworks', parameters('peerArray')[copyIndex()].peer.existingRemoteVirtualNetworkName)]"
+                              }
+                          }
+                      }
+                  ]
+              },
+              "parameters": {}
+          }
       }
-    ],
-    "outputs": {
-    }
-  }
+  ]
+}

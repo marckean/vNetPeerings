@@ -1,5 +1,4 @@
 {
-    // https://docs.microsoft.com/en-us/azure/architecture/building-blocks/extending-templates/objects-as-parameters
     "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
     "contentVersion": "1.0.0.0",
     "parameters": {
@@ -57,7 +56,7 @@
                                 "allowForwardedTraffic": false,
                                 "allowGatewayTransit": "[parameters('peerArray')[copyIndex()].peer.allowGatewayTransit]",
                                 "useRemoteGateways": "[parameters('peerArray')[copyIndex()].peer.useRemoteGateways]",
-                                "existingRemoteVirtualNetworkName": {
+                                "remoteVirtualNetwork": {
                                     "id": "[resourceId(parameters('peerArray')[copyIndex()].peer.existingRemoteVirtualNetworkResourceGroupName, 'Microsoft.Network/virtualNetworks', parameters('peerArray')[copyIndex()].peer.existingRemoteVirtualNetworkName)]"
                                 }
                             }
