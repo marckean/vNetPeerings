@@ -1,0 +1,76 @@
+{
+    "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+    "contentVersion": "1.0.0.0",
+    "parameters": {
+        "peerArray": {
+            "type": "array",
+            "defaultValue": [
+                {
+                  "peer": {
+                    "existingLocalVirtualNetworkName": "T1vNet", "existingLocalVirtualNetworkResourceGroupName": "T1_01",
+                    "existingRemoteVirtualNetworkName": "T2vNet01", "existingRemoteVirtualNetworkResourceGroupName": "T2_01",
+                    "useRemoteGateways": false, "allowGatewayTransit": false
+                  }
+                },
+                {
+                  "peer": {
+                    "existingLocalVirtualNetworkName": "T1vNet", "existingLocalVirtualNetworkResourceGroupName": "T1_01",
+                    "existingRemoteVirtualNetworkName": "T2vNet02", "existingRemoteVirtualNetworkResourceGroupName": "T2_01",
+                    "useRemoteGateways": false, "allowGatewayTransit": false
+                  }
+                }
+            ],
+            "metadata": {
+                "description": "Array of vNet peers. See defaultValue for example."
+            }
+          }
+    },
+    "variables": {},
+    "resources": [
+        {
+            "apiVersion": "2018-05-01",
+            "name": "[concat('peer', copyIndex(1), '_', parameters('peerArray')[copyIndex()].peer.existingRemoteVirtualNetworkName)]",
+            "type": "Microsoft.Resources/deployments",
+            "resourceGroup": "[parameters('peerArray')[copyIndex()].peer.existingLocalVirtualNetworkResourceGroupName]",
+            "copy": {
+                "name": "peercopy",
+                "count": "[length(parameters('peerArray'))]",
+                "mode": "Serial",
+                "batchSize": 1
+            },
+            "properties": {
+                "mode": "Incremental",
+                "template": {
+                    "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+                    "contentVersion": "1.0.0.0",
+                    "parameters": {},
+                    "variables": {
+                        "existingLocalVirtualNetworkName": "[parameters('peerArray')[copyIndex()].peer.existingLocalVirtualNetworkName]",
+                        "existingRemoteVirtualNetworkName": "[parameters('peerArray')[copyIndex()].peer.existingRemoteVirtualNetworkName]",
+                        "existingRemoteVirtualNetworkResourceGroupName": "[parameters('peerArray')[copyIndex()].peer.existingRemoteVirtualNetworkResourceGroupName]",
+                        "useRemoteGateways": "[parameters('peerArray')[copyIndex()].peer.useRemoteGateways]",
+                        "allowGatewayTransit": "[parameters('peerArray')[copyIndex()].peer.allowGatewayTransit]"
+                    },
+                    "resources": [
+                        {
+                            "apiVersion": "2018-11-01",
+                            "type": "Microsoft.Network/virtualNetworks/virtualNetworkPeerings",
+                            "name": "[concat(variables('existingLocalVirtualNetworkName'), '/peering-to-', variables('existingRemoteVirtualNetworkName'))]",
+                            "location": "[resourceGroup().location]",
+                            "properties": {
+                                "allowVirtualNetworkAccess": true,
+                                "allowForwardedTraffic": false,
+                                "allowGatewayTransit": "[variables('allowGatewayTransit')]",
+                                "useRemoteGateways": "[variables('useRemoteGateways')]",
+                                "existingRemoteVirtualNetworkName": {
+                                    "id": "[resourceId(variables('existingRemoteVirtualNetworkResourceGroupName'), 'Microsoft.Network/virtualNetworks', variables('existingRemoteVirtualNetworkName'))]"
+                                }
+                            }
+                        }
+                    ]
+                },
+                "parameters": {}
+            }
+        }
+    ]
+}
