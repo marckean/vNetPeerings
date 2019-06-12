@@ -30,7 +30,7 @@ This **part 5** of a 5 part series of templates to deploy a glorified 3 tier Azu
     - *Subscription based template*
     - All the peers, plus peer settings for all the vNets e.g. **Use Remote Gateways** and **Allow Gateway Transit**
 
- See the **deployment note** below. 
+ See the **deployment note** below for more details about deployment, either **as is** or **customised**. 
 
 | Template Description |
 |---------|
