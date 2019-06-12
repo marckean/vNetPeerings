@@ -4,22 +4,22 @@ This part 5 of a 5 part series of templates to deploy a glorified 3 tier Azure n
 1. https://github.com/marckean/Azure-T1-Network
     - Resource Group based template
 <p align="center">
-  <img src="AzureNetworkT1.jpg" height="300">
+  <img src="AzureNetworkT1.jpg" height="200">
 </p>
 2. https://github.com/marckean/Azure-T2-Network
     - Resource Group based template
 <p align="center">
-  <img src="AzureNetworkT2.jpg" height=50%>
+  <img src="AzureNetworkT2.jpg" height="200">
 </p>
 3. https://github.com/marckean/Azure-T3-Network
     - Resource Group based template
 <p align="center">
-  <img src="AzureNetworkT3.jpg" height: 50%>
+  <img src="AzureNetworkT3.jpg" height="200">
 </p>
 4. https://github.com/marckean/Azure-T3plus-Network
     - Resource Group based template
 <p align="center">
-  <img src="AzureNetworkT3plus.jpg" height: 50%>
+  <img src="AzureNetworkT3plus.jpg" height="200">
 </p>
 5. https://github.com/marckean/vNetPeerings **(current one)**
     - Subscription based template
