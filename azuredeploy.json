@@ -19,7 +19,7 @@
                   "useRemoteGateways": false, "allowGatewayTransit": false
                 }
               },
-      {
+              {
                 "peer": {
                   "existingLocalVirtualNetworkName": "T2vNet01", "existingLocalVirtualNetworkResourceGroupName": "T2_01",
                   "existingRemoteVirtualNetworkName": "T1vNet", "existingRemoteVirtualNetworkResourceGroupName": "T1_01",
@@ -33,7 +33,7 @@
                   "useRemoteGateways": false, "allowGatewayTransit": false
                 }
               },
-      {
+              {
                 "peer": {
                   "existingLocalVirtualNetworkName": "T2vNet01", "existingLocalVirtualNetworkResourceGroupName": "T2_01",
                   "existingRemoteVirtualNetworkName": "T3-TransitHubvNet", "existingRemoteVirtualNetworkResourceGroupName": "T3_01",
@@ -47,7 +47,7 @@
                   "useRemoteGateways": true, "allowGatewayTransit": false
                 }
               },
-      {
+              {
                 "peer": {
                   "existingLocalVirtualNetworkName": "T3-TransitHubvNet", "existingLocalVirtualNetworkResourceGroupName": "T3_01",
                   "existingRemoteVirtualNetworkName": "T2vNet01", "existingRemoteVirtualNetworkResourceGroupName": "T2_01",
@@ -59,6 +59,20 @@
                   "existingLocalVirtualNetworkName": "T3-TransitHubvNet", "existingLocalVirtualNetworkResourceGroupName": "T3_01",
                   "existingRemoteVirtualNetworkName": "T2vNet02", "existingRemoteVirtualNetworkResourceGroupName": "T2_01",
                   "useRemoteGateways": false, "allowGatewayTransit": true
+                }
+              },
+              {
+                "peer": {
+                  "existingLocalVirtualNetworkName": "T3-TransitHubvNet", "existingLocalVirtualNetworkResourceGroupName": "T3_01",
+                  "existingRemoteVirtualNetworkName": "T3plusvNet01", "existingRemoteVirtualNetworkResourceGroupName": "T3plus_01",
+                  "useRemoteGateways": false, "allowGatewayTransit": true
+                }
+              },
+              {
+                "peer": {
+                  "existingLocalVirtualNetworkName": "T3plusvNet01", "existingLocalVirtualNetworkResourceGroupName": "T3plus_01",
+                  "existingRemoteVirtualNetworkName": "T3-TransitHubvNet", "existingRemoteVirtualNetworkResourceGroupName": "T3_01",
+                  "useRemoteGateways": true, "allowGatewayTransit": false
                 }
               }
           ],
