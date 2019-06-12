@@ -1,6 +1,6 @@
 # Part 5 - vNet Peerings
 ## The Azure 3 Tier Network
-This part 5 of a 5 part series of templates to deploy a glorified 3 tier Azure network
+This **part 5** of a 5 part series of templates to deploy a glorified 3 tier Azure network
 1. https://github.com/marckean/Azure-T1-Network
     - Resource Group based template
 <p align="center">
@@ -21,7 +21,7 @@ This part 5 of a 5 part series of templates to deploy a glorified 3 tier Azure n
 <p align="center">
   <img src="AzureNetworkT3plus.jpg" height="200">
 </p>
-5. https://github.com/marckean/vNetPeerings **(current one)**
+5. https://github.com/marckean/vNetPeerings
     - Subscription based template
 
  See the **deployment note** below. 
@@ -34,6 +34,8 @@ For the serious security concious, this 3 tier network topology is one way to ac
 - the T1 vNet can't talk directly with the T3 Transit Hub vNet 
 - the T3 Transit Hub vNet can't talk directly with the T1 vNet
 
+This 5 part deployment deploys the below Azure based **network components only** including the ExpressRoute gateway, but not the non-network components shown e.g. VMs, NICs, Load Balancers or ExpressRoute circuit itself - these are here to show what it could ultimately look like or be used for. 
+
 <p align="center">
   <img src="AzureNetworkT1,T2,T3.jpg" width=80%>
 </p>
@@ -41,14 +43,14 @@ For the serious security concious, this 3 tier network topology is one way to ac
 ## Deployment note
 As part of this fully functional deployment - to ensure everything remains in-tact and works - it's recommended that the first four templates are deployed in the same order as above, however it's mandatory that the last one **vNetPeerings** is deployed last, as it is required that all vNets are deployed in order for peers to be created successfully.
 
-This 5 part series of templates is fully functional with no over-lapping address ranges, UDRs have all the correct next hop IP addresses and all the template parameters are correctly set
-- Azure-T1-Network - Resource Group **T1_01**
-- Azure-T2-Network - Resource Group **T2_01**
-- Azure-T3-Network - Resource Group **T3_01**
-- Azure-T3plus-Network - Resource Group **T3plus_01**
+This 5 part series of templates is fully functional with no over-lapping address ranges, UDRs have all the correct next hop IP addresses and all the template parameters are correctly set. In order to deploy this successfully, be sure to deploy the templates to following resource groups:
+- Azure-T1-Network | Resource Group **T1_01**
+- Azure-T2-Network | Resource Group **T2_01**
+- Azure-T3-Network | Resource Group **T3_01**
+- Azure-T3plus-Network | Resource Group **T3plus_01**
+- vNetPeerings | Resource Group **<Any Resource Group>**
 
-
-This repo is to be deployed last and fills in all the relevant peers for the vNets.
+This **vNet Peerings** repo is to be deployed last and fills in all the relevant peers for the vNets.
 
 If you want to to a separate environment e.g. production, you can safely modify to suit your own environment, be sure to edit the **peerArray** parameter
 
