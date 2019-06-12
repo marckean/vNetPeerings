@@ -1,21 +1,33 @@
+# Part 5 - vNet Peerings
 ## The Azure 3 Tier Network
-This is a 5 part series of templates to deploy a glorified 3 tier Azure network
+This part 5 of a 5 part series of templates to deploy a glorified 3 tier Azure network
 1. https://github.com/marckean/Azure-T1-Network
     - Resource Group based template
+<p align="center">
+  <img src="AzureNetworkT1.jpg" width=80%>
+</p>
 2. https://github.com/marckean/Azure-T2-Network
     - Resource Group based template
-1. https://github.com/marckean/Azure-T3-Network
+<p align="center">
+  <img src="AzureNetworkT2.jpg" width=80%>
+</p>
+3. https://github.com/marckean/Azure-T3-Network
     - Resource Group based template
-1. https://github.com/marckean/Azure-T3plus-Network
+<p align="center">
+  <img src="AzureNetworkT2.jpg" width=80%>
+</p>
+4. https://github.com/marckean/Azure-T3plus-Network
     - Resource Group based template
-1. https://github.com/marckean/vNetPeerings
+5. https://github.com/marckean/vNetPeerings **(current one)**
     - Subscription based template
 
-| Description |
-|---------|
-|Resource group deployments deploy to resource groups and use schema: `https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#`<br><br>Subscription deployments deploy to subscriptions and use schema: `https://schema.management.azure.com/schemas/2018-05-01/subscriptionDeploymentTemplate.json#`|
+ See the **deployment note** below. 
 
-For the serious security concious, this is one way to achieve super tight network security within Azure. In brief:
+| Template Description |
+|---------|
+|**Resource Group** deployments deploy to resource groups and use schema: `https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#`<br><br>**Subscription** deployments deploy to subscriptions and use schema: `https://schema.management.azure.com/schemas/2018-05-01/subscriptionDeploymentTemplate.json#`|
+
+For the serious security concious, this 3 tier network topology is one way to achieve super tight network security within Azure. In brief:
 - the T1 vNet can't talk directly with the T3 Transit Hub vNet 
 - the T3 Transit Hub vNet can't talk directly with the T1 vNet
 
@@ -23,14 +35,23 @@ For the serious security concious, this is one way to achieve super tight networ
   <img src="AzureNetworkT1,T2,T3.jpg" width=80%>
 </p>
 
-# Part 5
+## Deployment note
+As part of this fully functional deployment - to ensure everything remains in-tact and works - it's recommended that the first four templates are deployed in the same order as above, however it's mandatory that the last one **vNetPeerings** is deployed last, as it is required that all vNets are deployed in order for peers to be created successfully.
 
-## Azure-T2-Network
-This repo is for the Tier 2 part of the 3 tier network.
+This 5 part series of templates is fully functional with no over-lapping address ranges, UDRs have all the correct next hop IP addresses and all the template parameters are correctly set
+- Azure-T1-Network - Resource Group **T1_01**
+- Azure-T2-Network - Resource Group **T2_01**
+- Azure-T3-Network - Resource Group **T3_01**
+- Azure-T3plus-Network - Resource Group **T3plus_01**
 
-![AzureNetworkT2.jpg](AzureNetworkT2.jpg)
 
-To deploy the middle T2 layer of this Azure network:
+This repo is to be deployed last and fills in all the relevant peers for the vNets.
+
+If you want to to a separate environment e.g. production, you can safely modify to suit your own environment, be sure to edit the **peerArray** parameter
+
+<p align="center">
+  <img src="Annotation 2019-06-12 114057.jpg" width=80%>
+</p>
 
 <a href="https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2Fmarckean%2FvNetPeerings%2Fmaster%2Fazuredeploy.json" target="_blank">
     <img src="http://azuredeploy.net/deploybutton.png"/>
