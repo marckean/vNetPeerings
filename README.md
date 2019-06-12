@@ -4,7 +4,7 @@ This part 5 of a 5 part series of templates to deploy a glorified 3 tier Azure n
 1. https://github.com/marckean/Azure-T1-Network
     - Resource Group based template
 <p align="center">
-  <img src="AzureNetworkT1.jpg" height=20%>
+  <img src="AzureNetworkT1.jpg" height="300">
 </p>
 2. https://github.com/marckean/Azure-T2-Network
     - Resource Group based template
