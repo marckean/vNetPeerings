@@ -2,27 +2,37 @@
 ## The Azure 3 Tier Network
 This **part 5** of a 5 part series of templates to deploy a glorified 3 tier Azure network
 1. https://github.com/marckean/Azure-T1-Network
-    - Resource Group based template
+    - *Resource Group based template*
+    - Most un-trusted tier, as it has access to the internet
+    - The Azure Firewall is deployed - you could use two IaaS based NVAs and a couple of load balancers, however the [Azure Firewall](https://docs.microsoft.com/en-us/azure/firewall/overview) is PaaS, it's already highly available and scalable.
 <p align="center">
   <img src="AzureNetworkT1.jpg" height="200">
 </p>
 2. https://github.com/marckean/Azure-T2-Network
-    - Resource Group based template
+    - *Resource Group based template*
+    - Mid tier, best for applications. Deploy distributed applications to their own vNet with any number of subnets
+    - BGP route propagation is allowed on the UDRs so that on-prem advertisements will ensure traffic destined to on-prem will route back via the ExpressRoute gateway in the Tier 3 network, then over the ExpressRoute circuit back to on-prem
+        - You could use a [site-to-site VPN](https://docs.microsoft.com/en-us/azure/vpn-gateway/vpn-gateway-howto-site-to-site-resource-manager-portal) here instead
+    - A default route of 0.0.0.0/0 captures all other traffic sending this to the Azure Firewall for packet inspection and final control
 <p align="center">
   <img src="AzureNetworkT2.jpg" height="200">
 </p>
 3. https://github.com/marckean/Azure-T3-Network
-    - Resource Group based template
+    - *Resource Group based template*
+    - This is known as the hub/transit vNet, which has the connection/s back to on-prem
+    - Currently there is one ExpressRoute gateway deployed, however you can configure [ExpressRoute and Site-to-Site VPN coexistence](https://docs.microsoft.com/en-us/azure/expressroute/expressroute-howto-coexist-resource-manager) for HA as a backup to ExpressRoute. 
 <p align="center">
   <img src="AzureNetworkT3.jpg" height="200">
 </p>
 4. https://github.com/marckean/Azure-T3plus-Network
-    - Resource Group based template
+    - *Resource Group based template*
+    - This is the the most trusted and most isolated network as there's no UDRs to forward traffic to anywhere, there's access back to on-prem with the vNet peer settings **Use Remote Gateways** and **Allow Gateway Transit** turned on
 <p align="center">
   <img src="AzureNetworkT3plus.jpg" height="200">
 </p>
 5. https://github.com/marckean/vNetPeerings
-    - Subscription based template
+    - *Subscription based template*
+    - All the peers, plus peer settings for all the vNets e.g. **Use Remote Gateways** and **Allow Gateway Transit**
 
  See the **deployment note** below. 
 
