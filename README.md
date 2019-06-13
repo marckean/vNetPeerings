@@ -61,10 +61,16 @@ This **vNet Peerings** repo is to be deployed last and fills in all the relevant
 ## Custom Deployment
 If you want to deploy a customised version of this deployment in a separate environment e.g. production, you can safely modify these templates to suit your own environment and it's super easy, all you need to do is edit the parameters for each template at the time of deployment. 
 
-For this **vNet Peerings** repo, be sure to edit the **peerArray** parameter
+For this **vNet Peerings** repo, as there's so many parameters with this template, it would be easier to edit the parameters in the **Edit Template** section in the the portal. It also doesn't matter which **Resource Group** or **Subscription** you choose here, as this is specified in the template parameters and the template [deploys across both subscriptions & resource groups](https://docs.microsoft.com/en-us/azure/azure-resource-manager/resource-manager-cross-resource-group-deployment).
 
 <p align="center">
-  <img src="Annotation 2019-06-12 114057.jpg" width=80%>
+  <img src="Annotation 2019-06-13 130158.jpg" width=80%>
+</p>
+
+Note that as this template can deploy across **Resource Groups** and across **Subscriptions**, if you're using just the one subscription, simply fill in the same subscription ID throughout the **peerArray** parameter array for both **existingLocalVirtualNetworkSubscriptionID** and **existingRemoteVirtualNetworkSubscriptionID**.
+
+<p align="center">
+  <img src="Annotation 2019-06-13 131405.jpg" width=80%>
 </p>
 
 <a href="https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2Fmarckean%2FvNetPeerings%2Fmaster%2Fazuredeploy.json" target="_blank">
