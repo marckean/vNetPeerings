@@ -7,71 +7,71 @@
           "defaultValue": [
               {
                 "peer": {
-                  "existingLocalVirtualNetworkName": "T1vNet", "existingLocalVirtualNetworkResourceGroupName": "T1_01",
-                  "existingRemoteVirtualNetworkName": "T2vNet01", "existingRemoteVirtualNetworkResourceGroupName": "T2_01",
+                  "existingLocalVirtualNetworkName": "T1vNet", "existingLocalVirtualNetworkResourceGroupName": "T1-01", "existingLocalVirtualNetworkSubscriptionID": "e834d020-0277-4def-9874-b7c08fe34e7c",
+                  "existingRemoteVirtualNetworkName": "T2vNet01", "existingRemoteVirtualNetworkResourceGroupName": "T2-01", "existingRemoteVirtualNetworkSubscriptionID": "974f38aa-46ab-4729-8374-837427fc24cd",
                   "useRemoteGateways": false, "allowGatewayTransit": false
                 }
               },
               {
                 "peer": {
-                  "existingLocalVirtualNetworkName": "T1vNet", "existingLocalVirtualNetworkResourceGroupName": "T1_01",
-                  "existingRemoteVirtualNetworkName": "T2vNet02", "existingRemoteVirtualNetworkResourceGroupName": "T2_01",
+                  "existingLocalVirtualNetworkName": "T1vNet", "existingLocalVirtualNetworkResourceGroupName": "T1-01", "existingLocalVirtualNetworkSubscriptionID": "e834d020-0277-4def-9874-b7c08fe34e7c",
+                  "existingRemoteVirtualNetworkName": "T2vNet02", "existingRemoteVirtualNetworkResourceGroupName": "T2-01", "existingRemoteVirtualNetworkSubscriptionID": "974f38aa-46ab-4729-8374-837427fc24cd",
                   "useRemoteGateways": false, "allowGatewayTransit": false
                 }
               },
               {
                 "peer": {
-                  "existingLocalVirtualNetworkName": "T2vNet01", "existingLocalVirtualNetworkResourceGroupName": "T2_01",
-                  "existingRemoteVirtualNetworkName": "T1vNet", "existingRemoteVirtualNetworkResourceGroupName": "T1_01",
+                  "existingLocalVirtualNetworkName": "T2vNet01", "existingLocalVirtualNetworkResourceGroupName": "T2-01", "existingLocalVirtualNetworkSubscriptionID": "974f38aa-46ab-4729-8374-837427fc24cd",
+                  "existingRemoteVirtualNetworkName": "T1vNet", "existingRemoteVirtualNetworkResourceGroupName": "T1-01", "existingRemoteVirtualNetworkSubscriptionID": "e834d020-0277-4def-9874-b7c08fe34e7c",
                   "useRemoteGateways": false, "allowGatewayTransit": false
                 }
               },
               {
                 "peer": {
-                  "existingLocalVirtualNetworkName": "T2vNet02", "existingLocalVirtualNetworkResourceGroupName": "T2_01",
-                  "existingRemoteVirtualNetworkName": "T1vNet", "existingRemoteVirtualNetworkResourceGroupName": "T1_01",
+                  "existingLocalVirtualNetworkName": "T2vNet02", "existingLocalVirtualNetworkResourceGroupName": "T2-01", "existingLocalVirtualNetworkSubscriptionID": "974f38aa-46ab-4729-8374-837427fc24cd",
+                  "existingRemoteVirtualNetworkName": "T1vNet", "existingRemoteVirtualNetworkResourceGroupName": "T1-01", "existingRemoteVirtualNetworkSubscriptionID": "e834d020-0277-4def-9874-b7c08fe34e7c",
                   "useRemoteGateways": false, "allowGatewayTransit": false
                 }
               },
               {
                 "peer": {
-                  "existingLocalVirtualNetworkName": "T2vNet01", "existingLocalVirtualNetworkResourceGroupName": "T2_01",
-                  "existingRemoteVirtualNetworkName": "T3-TransitHubvNet", "existingRemoteVirtualNetworkResourceGroupName": "T3_01",
+                  "existingLocalVirtualNetworkName": "T2vNet01", "existingLocalVirtualNetworkResourceGroupName": "T2-01", "existingLocalVirtualNetworkSubscriptionID": "974f38aa-46ab-4729-8374-837427fc24cd",
+                  "existingRemoteVirtualNetworkName": "T3-TransitHubvNet", "existingRemoteVirtualNetworkResourceGroupName": "T3_01", "existingRemoteVirtualNetworkSubscriptionID": "11d3cd28-1199-4606-ae37-23eb12619da7",
                   "useRemoteGateways": true, "allowGatewayTransit": false
                 }
               },
               {
                 "peer": {
-                  "existingLocalVirtualNetworkName": "T2vNet02", "existingLocalVirtualNetworkResourceGroupName": "T2_01",
-                  "existingRemoteVirtualNetworkName": "T3-TransitHubvNet", "existingRemoteVirtualNetworkResourceGroupName": "T3_01",
+                  "existingLocalVirtualNetworkName": "T2vNet02", "existingLocalVirtualNetworkResourceGroupName": "T2-01", "existingLocalVirtualNetworkSubscriptionID": "974f38aa-46ab-4729-8374-837427fc24cd",
+                  "existingRemoteVirtualNetworkName": "T3-TransitHubvNet", "existingRemoteVirtualNetworkResourceGroupName": "T3_01", "existingRemoteVirtualNetworkSubscriptionID": "11d3cd28-1199-4606-ae37-23eb12619da7",
                   "useRemoteGateways": true, "allowGatewayTransit": false
                 }
               },
               {
                 "peer": {
-                  "existingLocalVirtualNetworkName": "T3-TransitHubvNet", "existingLocalVirtualNetworkResourceGroupName": "T3_01",
-                  "existingRemoteVirtualNetworkName": "T2vNet01", "existingRemoteVirtualNetworkResourceGroupName": "T2_01",
+                  "existingLocalVirtualNetworkName": "T3-TransitHubvNet", "existingLocalVirtualNetworkResourceGroupName": "T3_01", "existingLocalVirtualNetworkSubscriptionID": "11d3cd28-1199-4606-ae37-23eb12619da7",
+                  "existingRemoteVirtualNetworkName": "T2vNet01", "existingRemoteVirtualNetworkResourceGroupName": "T2-01", "existingRemoteVirtualNetworkSubscriptionID": "974f38aa-46ab-4729-8374-837427fc24cd",
                   "useRemoteGateways": false, "allowGatewayTransit": true
                 }
               },
               {
                 "peer": {
-                  "existingLocalVirtualNetworkName": "T3-TransitHubvNet", "existingLocalVirtualNetworkResourceGroupName": "T3_01",
-                  "existingRemoteVirtualNetworkName": "T2vNet02", "existingRemoteVirtualNetworkResourceGroupName": "T2_01",
+                  "existingLocalVirtualNetworkName": "T3-TransitHubvNet", "existingLocalVirtualNetworkResourceGroupName": "T3_01", "existingLocalVirtualNetworkSubscriptionID": "11d3cd28-1199-4606-ae37-23eb12619da7",
+                  "existingRemoteVirtualNetworkName": "T2vNet02", "existingRemoteVirtualNetworkResourceGroupName": "T2-01", "existingRemoteVirtualNetworkSubscriptionID": "974f38aa-46ab-4729-8374-837427fc24cd",
                   "useRemoteGateways": false, "allowGatewayTransit": true
                 }
               },
               {
                 "peer": {
-                  "existingLocalVirtualNetworkName": "T3-TransitHubvNet", "existingLocalVirtualNetworkResourceGroupName": "T3_01",
-                  "existingRemoteVirtualNetworkName": "T3plusvNet01", "existingRemoteVirtualNetworkResourceGroupName": "T3plus_01",
+                  "existingLocalVirtualNetworkName": "T3-TransitHubvNet", "existingLocalVirtualNetworkResourceGroupName": "T3_01", "existingLocalVirtualNetworkSubscriptionID": "11d3cd28-1199-4606-ae37-23eb12619da7",
+                  "existingRemoteVirtualNetworkName": "T3plusvNet01", "existingRemoteVirtualNetworkResourceGroupName": "T3plus_01", "existingRemoteVirtualNetworkSubscriptionID": "11d3cd28-1199-4606-ae37-23eb12619da7",
                   "useRemoteGateways": false, "allowGatewayTransit": true
                 }
               },
               {
                 "peer": {
-                  "existingLocalVirtualNetworkName": "T3plusvNet01", "existingLocalVirtualNetworkResourceGroupName": "T3plus_01",
-                  "existingRemoteVirtualNetworkName": "T3-TransitHubvNet", "existingRemoteVirtualNetworkResourceGroupName": "T3_01",
+                  "existingLocalVirtualNetworkName": "T3plusvNet01", "existingLocalVirtualNetworkResourceGroupName": "T3plus_01", "existingLocalVirtualNetworkSubscriptionID": "11d3cd28-1199-4606-ae37-23eb12619da7",
+                  "existingRemoteVirtualNetworkName": "T3-TransitHubvNet", "existingRemoteVirtualNetworkResourceGroupName": "T3_01", "existingRemoteVirtualNetworkSubscriptionID": "11d3cd28-1199-4606-ae37-23eb12619da7",
                   "useRemoteGateways": true, "allowGatewayTransit": false
                 }
               }
@@ -84,43 +84,43 @@
   "variables": {},
   "resources": [
       {
-          "apiVersion": "2018-05-01",
-          "name": "[concat('peer', copyIndex(), '_', parameters('peerArray')[copyIndex()].peer.existingRemoteVirtualNetworkName)]",
-          "type": "Microsoft.Resources/deployments",
-          "resourceGroup": "[parameters('peerArray')[copyIndex()].peer.existingLocalVirtualNetworkResourceGroupName]",
-          "copy": {
-              "name": "peercopy",
-              "count": "[length(parameters('peerArray'))]",
-              "mode": "Serial",
-              "batchSize": 1
-          },
-          "properties": {
-              "mode": "Incremental",
-              "template": {
-                  "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
-                  "contentVersion": "1.0.0.0",
-                  "parameters": {},
-                  "variables": {},
-                  "resources": [
-                      {
-                          "apiVersion": "2018-11-01",
-                          "type": "Microsoft.Network/virtualNetworks/virtualNetworkPeerings",
-                          "name": "[concat(parameters('peerArray')[copyIndex()].peer.existingLocalVirtualNetworkName, '/peering-to-', parameters('peerArray')[copyIndex()].peer.existingRemoteVirtualNetworkName)]",
-                          "location": "[resourceGroup().location]",
-                          "properties": {
-                              "allowVirtualNetworkAccess": true,
-                              "allowForwardedTraffic": false,
-                              "allowGatewayTransit": "[parameters('peerArray')[copyIndex()].peer.allowGatewayTransit]",
-                              "useRemoteGateways": "[parameters('peerArray')[copyIndex()].peer.useRemoteGateways]",
-                              "remoteVirtualNetwork": {
-                                  "id": "[resourceId(parameters('peerArray')[copyIndex()].peer.existingRemoteVirtualNetworkResourceGroupName, 'Microsoft.Network/virtualNetworks', parameters('peerArray')[copyIndex()].peer.existingRemoteVirtualNetworkName)]"
-                              }
-                          }
-                      }
-                  ]
-              },
-              "parameters": {}
-          }
+        "apiVersion": "2018-05-01",
+        "name": "[concat('peer', copyIndex(), '_', parameters('peerArray')[copyIndex()].peer.existingRemoteVirtualNetworkName)]",
+        "type": "Microsoft.Resources/deployments",
+        "resourceGroup": "[parameters('peerArray')[copyIndex()].peer.existingLocalVirtualNetworkResourceGroupName]",
+        "subscriptionId": "[parameters('peerArray')[copyIndex()].peer.existingLocalVirtualNetworkSubscriptionID]",
+        "copy": {
+            "name": "peercopy",
+            "count": "[length(parameters('peerArray'))]",
+            "mode": "Parallel"
+        },
+        "properties": {
+            "mode": "Incremental",
+            "template": {
+                "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+                "contentVersion": "1.0.0.0",
+                "parameters": {},
+                "variables": {},
+                "resources": [
+                    {
+                        "apiVersion": "2018-11-01",
+                        "type": "Microsoft.Network/virtualNetworks/virtualNetworkPeerings",
+                        "name": "[concat(parameters('peerArray')[copyIndex()].peer.existingLocalVirtualNetworkName, '/peering-to-', parameters('peerArray')[copyIndex()].peer.existingRemoteVirtualNetworkName)]",
+                        "location": "[resourceGroup().location]",
+                        "properties": {
+                            "allowVirtualNetworkAccess": true,
+                            "allowForwardedTraffic": false,
+                            "allowGatewayTransit": "[parameters('peerArray')[copyIndex()].peer.allowGatewayTransit]",
+                            "useRemoteGateways": "[parameters('peerArray')[copyIndex()].peer.useRemoteGateways]",
+                            "remoteVirtualNetwork": {
+                                "id": "[resourceId(parameters('peerArray')[copyIndex()].peer.existingRemoteVirtualNetworkSubscriptionID, parameters('peerArray')[copyIndex()].peer.existingRemoteVirtualNetworkResourceGroupName, 'Microsoft.Network/virtualNetworks', parameters('peerArray')[copyIndex()].peer.existingRemoteVirtualNetworkName)]"
+                            }
+                        }
+                    }
+                ]
+            },
+            "parameters": {}
+        }
       }
   ]
 }
